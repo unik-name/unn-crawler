@@ -4,6 +4,7 @@
   "description": "Crawler scans the ARK network to get information about the peers in the network.",
   "main": "src/crawler.js",
   "scripts": {
+    "start": "node app.js",
     "start:relay1": "node app.js http://51.15.195.138:4002",
     "start:forger1": "node app.js http://51.15.218.206:4002",
     "lint": "eslint ./ --fix"

@@ -18,9 +18,12 @@ to support development new plugins and tools for Ark's Ecosystem and maintenance
 
 ## Usage
 
-`npm start http://<ip>:<port>`
+`npm run start:relay1`
 
-For port use the p2p port, which is 4001 for Ark's mainnet or 4002 for Ark's devnet.
+or, with a custom node:
+`npm run start http://<ip>:<port>`
+
+For port use the p2p port, which is 4001 for UNS's livenet or 4002 for UNS's testing sandbox.
 
 ## Credits
 
