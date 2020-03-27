@@ -1,9 +1,11 @@
 # Crawler
 
-Crawler scans the ARK network to get information about the peers in the network.
+Crawler scans the [UNS network](https://uns.network) to get information about the peers in the network.
 
 #### ❤️ Support maintenance and development of plugins
-If you find this or other plugins useful please consider
+
+This project is fork of [crawler](https://github.com/deadlock-delegate/crawler) from `deadlock` delegate.
+If you find this useful, please consider:
 
 - voting for `deadlock` delegate
 - donating to `AWtgFYbvtLDYccJvC5MChk4dpiUy2Krt2U`
@@ -22,10 +24,11 @@ For port use the p2p port, which is 4001 for Ark's mainnet or 4002 for Ark's dev
 
 ## Credits
 
+- [Unikname project](https://unik-name.com)
+- [deadlock](https://github.com/deadlock-delegate)
 - [roks0n](https://github.com/roks0n)
 - [dmvt](https://github.com/dmvt)
-- [All Contributors](../../../../contributors)
 
 ## License
 
-[MIT](LICENSE) © roks0n
+[MIT](LICENSE) © roks0n, Unikname
