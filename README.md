@@ -12,6 +12,10 @@ If you find this useful, please consider:
 
 to support development new plugins and tools for Ark's Ecosystem and maintenance of existing ones. Full list of contributions can be found on [https://arkdelegatesio/delegate/deadlock/](https://arkdelegates.io/delegate/deadlock/contributions/). 🖖
 
+## Prerequisites
+
+- `NodeJS` 10 or 12
+
 ## Installation
 
 `npm install`
