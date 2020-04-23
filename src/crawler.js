@@ -63,6 +63,7 @@ class Crawler {
   async discoverPeers (peer) {
     return new Promise((resolve, reject) => {
       const connection = this.peers.get(peer.ip)
+      debug("Discover peers throught...", peer.ip);
       if (!connection) {
         reject(new Error(`No connection exists for ${peer.ip}:${peer.port}`))
       }
@@ -78,6 +79,8 @@ class Crawler {
           if (peer.ip in this.samplePeers) {
             this.samplePeers[peer.ip] = VISITED
           }
+
+          debug("Found peers for {}: {}", peer.ip, response.data);
 
           response.data.map((peer) => {
             if (!(peer.ip in this.nodes)) {
@@ -113,6 +116,7 @@ class Crawler {
   scanNetwork () {
     const promises = map(this.nodes, (peer) => {
       return new Promise((resolve, reject) => {
+        debug("Scan network throught...", peer.ip);
         const connection = this.peers.get(peer.ip)
         if (!connection) {
           return resolve()
@@ -142,3 +146,9 @@ class Crawler {
 }
 
 module.exports = Crawler
+
+function debug(message, ...optionalParams) {
+  if (process.env.DEBUG) {
+    console.log(message, optionalParams);
+  }
+}
