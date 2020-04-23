@@ -5,8 +5,9 @@
   "main": "src/crawler.js",
   "scripts": {
     "start": "node app.js",
-    "start:relay1": "node app.js http://51.15.195.138:4002",
-    "start:forger1": "node app.js http://51.15.218.206:4002",
+    "sandbox:relay1": "node app.js http://51.15.195.138:4002",
+    "sandbox:forger1": "node app.js http://51.15.218.206:4002",
+    "livenet:relay01": "node app.js http://212.47.247.38:4001",
     "lint": "eslint ./ --fix"
   },
   "repository": {
