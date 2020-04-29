@@ -22,7 +22,10 @@ to support development new plugins and tools for Ark's Ecosystem and maintenance
 
 ## Usage
 
-`npm run start:relay1`
+    $ npm run livenet
+    $ npm run sandbox
+    $ npm run livenet:relay01
+    $ npm run sandbox:relay1
 
 or, with a custom node:
 `npm run start http://<ip>:<port>`
@@ -31,7 +34,8 @@ For port use the p2p port, which is 4001 for UNS's livenet or 4002 for UNS's tes
 
 ## Credits
 
-- [Unikname project](https://unik-name.com)
+- [Unikname project](https://unikname.com)
+- [UNS.network](https://uns.network)
 - [deadlock](https://github.com/deadlock-delegate)
 - [roks0n](https://github.com/roks0n)
 - [dmvt](https://github.com/dmvt)
