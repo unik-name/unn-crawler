@@ -8,7 +8,7 @@
     "sandbox": "npm run sandbox:relay1",
     "sandbox:relay1": "node app.js http://51.15.195.138:4002",
     "sandbox:forger1": "node app.js http://51.15.218.206:4002",
-    "livenet": "npm run livenet:relay01",
+    "livenet": "npm run http://api.uns.network:4001",
     "livenet:relay01": "node app.js http://212.47.247.38:4001",
     "lint": "eslint ./ --fix"
   },
