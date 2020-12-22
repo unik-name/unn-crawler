@@ -51,7 +51,7 @@ class Crawler {
       await this.scanNetwork()
       if (this.disconnect) {
         console.log('... disconnecting from all peers')
-        this.peers.disconnectAll()
+        await this.peers.disconnectAll()
       }
     } catch (err) {
       console.error(err)
