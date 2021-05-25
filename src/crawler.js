@@ -135,6 +135,7 @@ class Crawler {
             })
             this.nodes[peer.ip].height = response.data.state.header.height
             this.nodes[peer.ip].id = response.data.state.header.id
+            this.nodes[peer.ip].version = response.data.config.version
             return resolve()
           }
         )
