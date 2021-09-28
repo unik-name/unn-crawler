@@ -123,7 +123,12 @@ class Crawler {
         if (!connection) {
           return resolve();
         }
+
+        const timeBeforeSocketCall = new Date().getTime();
+
         connection.emit("p2p.peer.getStatus", this.request, (err, response) => {
+          const latency = new Date().getTime() - timeBeforeSocketCall;
+          debug("p2p.peer.getStatus response data:", response.data);
           if (err) {
             console.error(
               `Error when calling p2p.peer.getStatus on ${peer.ip}: ${err}`
@@ -137,6 +142,7 @@ class Crawler {
           this.nodes[peer.ip].height = response.data.state.header.height;
           this.nodes[peer.ip].id = response.data.state.header.id;
           this.nodes[peer.ip].version = response.data.config.version;
+          this.nodes[peer.ip].latency = latency;
           return resolve();
         });
       });

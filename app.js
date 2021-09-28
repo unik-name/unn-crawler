@@ -93,7 +93,7 @@ const report = (crawler) => {
 
   // delay stats
   console.log("");
-  console.log("Delay");
+  console.log("Delay from this location:");
   console.log(`  Avg: ${averageDelay}ms`);
   console.log(`  Min: ${minDelay}ms`);
   console.log(`  Max: ${maxDelay}ms`);
