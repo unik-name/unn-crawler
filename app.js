@@ -17,33 +17,33 @@ const report = (crawler) => {
   const ipNodes = orderBy(Object.keys(crawler.nodes));
 
   for (const ipNode of ipNodes) {
-    const item = crawler.nodes[ipNode];
-    if (item.height === undefined || item.id === undefined) {
+    const node = crawler.nodes[ipNode];
+    if (node.height === undefined || node.id === undefined) {
       continue;
     }
 
-    if (blockStats[item.height]) {
-      blockStats[item.height].count += 1;
-      blockStats[item.height].ids[item.id].hashCount += 1;
-      blockStats[item.height].ids[item.id].ips.push(ipNode);
+    if (blockStats[node.height]) {
+      blockStats[node.height].count += 1;
+      blockStats[node.height].ids[node.id].hashCount += 1;
+      blockStats[node.height].ids[node.id].ips.push(ipNode);
     } else {
-      blockStats[item.height] = {};
-      blockStats[item.height].count = 1;
-      blockStats[item.height].height = item.height;
+      blockStats[node.height] = {};
+      blockStats[node.height].count = 1;
+      blockStats[node.height].height = node.height;
       // todo block ids
-      blockStats[item.height].ids = {};
-      blockStats[item.height].ids[item.id] = {};
-      blockStats[item.height].ids[item.id].hashCount = 1;
-      blockStats[item.height].ids[item.id].ips = [ipNode];
+      blockStats[node.height].ids = {};
+      blockStats[node.height].ids[node.id] = {};
+      blockStats[node.height].ids[node.id].hashCount = 1;
+      blockStats[node.height].ids[node.id].ips = [ipNode];
     }
 
-    if (versionStats[item.version]) {
-      versionStats[item.version].count += 1;
-      versionStats[item.version].ips.push(ipNode);
+    if (versionStats[node.version]) {
+      versionStats[node.version].count += 1;
+      versionStats[node.version].ips.push(ipNode);
     } else {
-      versionStats[item.version] = {
+      versionStats[node.version] = {
         count: 1,
-        version: item.version,
+        version: node.version,
         ips: [ipNode],
       };
     }
@@ -60,9 +60,16 @@ const report = (crawler) => {
   const maxDelay = Math.max(...allDelays);
   const minDelay = Math.min(...allDelays);
 
+  const ipToInt32 = (ip) => {
+    return ip.split(".").reduce((int, v) => int * 256 + +v);
+  };
+
   const formatIpsArray = (ips) => {
+    const sortedIps = ips.sort((a, b) => {
+      return ipToInt32(a) - ipToInt32(b);
+    });
     let result = "[";
-    ips.forEach((ip, index, array) => {
+    sortedIps.forEach((ip, index, array) => {
       result += `"${ip}`;
       const alias = config?.aliases[ip];
       if (alias) {
