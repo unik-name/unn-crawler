@@ -2,6 +2,11 @@ const Crawler = require("./src/crawler");
 const { URL } = require("url");
 const { orderBy } = require("lodash/collection");
 
+var loadConfig = require("load-config-file");
+loadConfig.register(".json", JSON.parse);
+
+const config = loadConfig("config");
+
 const crawler = new Crawler();
 const args = process.argv.slice(2);
 
@@ -55,6 +60,23 @@ const report = (crawler) => {
   const maxDelay = Math.max(...allDelays);
   const minDelay = Math.min(...allDelays);
 
+  const formatIpsArray = (ips) => {
+    let result = "[";
+    ips.forEach((ip, index, array) => {
+      result += `"${ip}`;
+      const alias = config?.aliases[ip];
+      if (alias) {
+        result += `/${alias}`;
+      }
+      result += '"';
+      if (index !== array.length - 1) {
+        result += ",";
+      }
+    });
+    result += "]";
+    return result;
+  };
+
   console.log("===========================================");
   console.log(`All nodes: ${Object.keys(crawler.nodes).length}`);
   console.log(`Nodes online: ${crawler.heights.length}`);
@@ -73,7 +95,7 @@ const report = (crawler) => {
     console.log(`  * ${stat.height} with ${stat.count} nodes. Block hashes:`);
     for (const hash in stat.ids) {
       console.log(
-        `      - ${hash} (${stat.ids[hash].hashCount} nodes - ${JSON.stringify(
+        `      - ${hash} (${stat.ids[hash].hashCount} nodes - ${formatIpsArray(
           stat.ids[hash].ips
         )})`
       );
@@ -91,7 +113,7 @@ const report = (crawler) => {
   )) {
     console.log("");
     console.log(
-      `  - ${stat.version} on ${stat.count} nodes - ${JSON.stringify(stat.ips)}`
+      `  - ${stat.version} on ${stat.count} nodes - ${formatIpsArray(stat.ips)}`
     );
   }
 
@@ -105,7 +127,7 @@ const report = (crawler) => {
 
   console.log("");
   console.log(`${ipNodes.length} IPs:`);
-  console.log("  " + JSON.stringify(ipNodes));
+  console.log("  " + formatIpsArray(ipNodes));
 
   console.log("------------------------------------------");
   console.log(`Finished scanning in ${new Date() - crawler.startTime}ms`);

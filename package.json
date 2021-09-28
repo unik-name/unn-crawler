@@ -26,6 +26,8 @@
   },
   "keywords": [
     "ark acosystem",
+    "unikname.network",
+    "unikname",
     "network",
     "scanner",
     "blockchain"
@@ -42,6 +44,7 @@
     "eslint-plugin-standard": "^4.0.1"
   },
   "dependencies": {
+    "load-config-file": "^1.0.8",
     "lodash": "^4.17.15",
     "private-ip": "^2.2.1",
     "socketcluster-client": "^14.2.2"
