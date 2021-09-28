@@ -66,12 +66,14 @@ const report = (crawler) => {
 
   // height/block stats
   console.log("");
+  console.log("");
   console.log("Height and block stats:");
   for (const stat of orderBy(Object.values(blockStats), ["height"], ["desc"])) {
-    console.log(`  ${stat.height} with ${stat.count} nodes. Block hashes:`);
+    console.log("");
+    console.log(`  * ${stat.height} with ${stat.count} nodes. Block hashes:`);
     for (const hash in stat.ids) {
       console.log(
-        `    - ${hash} (${stat.ids[hash].hashCount} nodes - ${JSON.stringify(
+        `      - ${hash} (${stat.ids[hash].hashCount} nodes - ${JSON.stringify(
           stat.ids[hash].ips
         )})`
       );
@@ -80,12 +82,14 @@ const report = (crawler) => {
 
   // version stats
   console.log("");
+  console.log("");
   console.log("Version stats:");
   for (const stat of orderBy(
     Object.values(versionStats),
     ["version"],
     ["desc"]
   )) {
+    console.log("");
     console.log(
       `  - ${stat.version} on ${stat.count} nodes - ${JSON.stringify(stat.ips)}`
     );
@@ -93,11 +97,13 @@ const report = (crawler) => {
 
   // delay stats
   console.log("");
+  console.log("");
   console.log("Delay from this location:");
   console.log(`  Avg: ${averageDelay}ms`);
   console.log(`  Min: ${minDelay}ms`);
   console.log(`  Max: ${maxDelay}ms`);
 
+  console.log("");
   console.log(`${ipNodes.length} IPs:`);
   console.log("  " + JSON.stringify(ipNodes));
 
