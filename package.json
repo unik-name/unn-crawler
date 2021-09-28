@@ -9,7 +9,12 @@
     "sandbox:relay1": "node app.js http://51.15.195.138:4002",
     "sandbox:forger1": "node app.js http://51.15.218.206:4002",
     "livenet": "npm run start http://api.uns.network:4001",
-    "livenet:relay01": "node app.js http://212.47.247.38:4001",
+    "livenet:forger01": "node app.js http://forger01.unikname.network:4001",
+    "livenet:relay01": "node app.js http://relay01.unikname.network:4001",
+    "livenet:relay02": "node app.js http://relay02.unikname.network:4001",
+    "livenet:relay03": "node app.js http://relay03.unikname.network:4001",
+    "livenet:relay04": "node app.js http://relay04.unikname.network:4001",
+    "livenet:relay05": "node app.js http://relay05.unikname.network:4001",
     "lint": "eslint ./ --fix"
   },
   "repository": {
@@ -38,6 +43,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
+    "private-ip": "^2.2.1",
     "socketcluster-client": "^14.2.2"
   }
 }
